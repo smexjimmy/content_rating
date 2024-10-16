@@ -1,17 +1,24 @@
-
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './ContentRating.css';
 
 class ContentRating extends Component {
   constructor() {
     super();
-  }
-  render() {
+    const [isvisible, setIsvisible] = useState(true)
+    const togglevisibility = () => {
+      setIsvisible(!isvisible)
+    }
     return (
-     <>
-     <h1>Text Content Rating</h1>
-     </>
-    );
+      <>
+      <div>
+        <h2> Toggle visibility</h2>
+        <button onClick={togglevisibility}> 
+          {isvisible ? 'hide message' : 'show message'}
+        </button>
+        {isvisible && <p>this is a hidden message</p>}
+      </div>
+      </>
+    )
   }
 }
 
